@@ -32,47 +32,49 @@
         
         for (int i = 0; i < rows; i++) 
         {
-        if ((i % 2) == 1)
-        {
-            v3Pos.x -= objDistance / 2.0f;
-        }
+            if ((i % 2) == 1)
+            {
+                v3Pos.x -= objDistance / 2.0f;
+            }
+                    
+            List<GameObject> col = new List<GameObject>();
+            for (int j = 0; j < cols; j++) 
+            {
+                GameObject go =Instantiate(prefab);
+                go.transform.position = v3Pos + v3Center;
+                go.transform.localScale = v3Scale;
+                go.transform.parent=this.transform;
+                go.transform.name+= " "+i+" - "+j;
+                v3Pos.x += objDistance;         
+                Color tempColor = GetRandomColor();
+                go.GetComponent<Renderer>().material.color=tempColor;
+                go.GetComponent<HexCell>().color = tempColor;
+                col.Add(go);
+                if(j!=0) // Adds Neighbour to the previous Cell in the Column
+                {
+                    go.GetComponent<HexCell>().AddNeighbour(col[j-1]);
+                }
                 
-        List<GameObject> col = new List<GameObject>();
-        for (int j = 0; j < cols; j++) 
-        {
-            GameObject go =Instantiate(prefab);
-            go.transform.position = v3Pos + v3Center;
-            go.transform.localScale = v3Scale;
-            go.transform.parent=this.transform;
-            go.transform.name+= " "+i+" - "+j;
-            v3Pos.x += objDistance;         
-            Color tempColor = GetRandomColor();
-            go.GetComponent<Renderer>().material.color=tempColor;
-            go.GetComponent<HexCell>().color = tempColor;
-            col.Add(go);
-            if(j!=0) // Adds Neighbour to the previous Cell in the Column
-            {
-                go.GetComponent<HexCell>().AddNeighbour(col[j-1]);
-            }
-            
-            if(i>0) // Adds Neighbour to the previous Cells in the previous Row
-            {
-                if(i%2==1)
+                if(i>0) // Adds Neighbour to the previous Cells in the previous Row
                 {
-                    int index = Mathf.Clamp(j-1,0,rows-1);
-                    go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][index]);
+                    if(i%2==1)
+                    {
+                        int index = Mathf.Clamp(j-1,0,rows-1);
+                        go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][index]);
+                    }
+                    else
+                    {
+                        int index = Mathf.Clamp(j+1,0,rows-1);
+                        go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][index]);
+                    }
+                    go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][j]);
                 }
-                else
-                {
-                    int index = Mathf.Clamp(j+1,0,rows-1);
-                    go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][index]);
-                }
-                go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][j]);
+
+                iTween.ScaleFrom(go.gameObject,Vector3.zero,Random.Range(0.1f,1f));
             }
-        }
-        rowList.Add(col);
-        v3Pos.x = rowStart;
-        v3Pos.y -= rowDist;
+            rowList.Add(col);
+            v3Pos.x = rowStart;
+            v3Pos.y -= rowDist;
         }
     }
 

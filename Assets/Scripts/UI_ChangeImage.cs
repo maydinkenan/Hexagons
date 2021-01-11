@@ -15,6 +15,7 @@ public class UI_ChangeImage : MonoBehaviour
     void Start()
     {
         CheckAudioSource();
+        Debug.Log("Check Image start");
     }
     public void ChangeImage()
     {

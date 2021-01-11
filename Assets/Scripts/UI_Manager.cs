@@ -27,12 +27,6 @@ public class UI_Manager : MonoBehaviour
     public void UpdatePoints(int newPoint)
     {
         pointsText.text = newPoint.ToString();
-        iTween.ScaleAdd(pointsText.gameObject,iTween.Hash("amount",Vector3.one * 1.2f, "looptype",iTween.LoopType.pingPong,"time",0.4f,"eastype", iTween.EaseType.easeOutSine));
-    }
-
-    public void StartGame()
-    {
-
     }
 
     public void ShowCanvasGroup(int canvasID)
