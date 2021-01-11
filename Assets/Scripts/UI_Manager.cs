@@ -22,19 +22,12 @@ public class UI_Manager : MonoBehaviour
         ShowCanvasGroup(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    void UpdatePlayerPointUI()
-    {
 
-    }
     public void UpdatePoints(int newPoint)
     {
         pointsText.text = newPoint.ToString();
+        iTween.ScaleAdd(pointsText.gameObject,iTween.Hash("amount",Vector3.one * 1.2f, "looptype",iTween.LoopType.pingPong,"time",0.4f,"eastype", iTween.EaseType.easeOutSine));
     }
 
     public void StartGame()

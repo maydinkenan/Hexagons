@@ -59,4 +59,10 @@ public class Game_Manager : MonoBehaviour
         hexGrid.GenerateGrid();
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    
+
 }
