@@ -31,8 +31,9 @@ public class Game_Manager : MonoBehaviour
 
     public void AddPoints()
     {
-        points+=(point * currentLevel-1);
+        points+=(point * currentLevel+1);
         UI_Manager._instance.UpdatePoints(points);
+        CheckLevel();
     }
 
     void CheckLevel()
@@ -40,10 +41,9 @@ public class Game_Manager : MonoBehaviour
         int levelIndex = 0;
         for(int i = 0 ; i < levelCaps.Length;i++)
         {
-            if(levelCaps[i] > points)
+            if(levelCaps[i] < points)
             {
                 levelIndex=i;
-                break;
             }
         }
         currentLevel=levelIndex;

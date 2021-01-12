@@ -13,7 +13,6 @@
     private float rowStart;
     private Vector3 v3Pos; 
     private Vector3 v3Scale = new Vector3(0.42f, 0.42f, 0.42f);
-    public Color[] colors;
     public List<List<GameObject>> rowList;
     void Start () 
     {
@@ -46,7 +45,7 @@
                 go.transform.parent=this.transform;
                 go.transform.name+= " "+i+" - "+j;
                 v3Pos.x += objDistance;         
-                Color tempColor = GetRandomColor();
+                Color tempColor = Game_Manager._instance.GetColor();
                 go.GetComponent<Renderer>().material.color=tempColor;
                 go.GetComponent<HexCell>().color = tempColor;
                 col.Add(go);
@@ -79,15 +78,18 @@
     }
 
 
-     Color GetRandomColor()
+     bool CheckNeighbourAvailability()
      {
-         if(colors.Length==0)
+         for(int i = 0; i<rows ; i++)
          {
-             return Color.white;
+             for(int j =0 ; j<cols ; j++)
+             {
+                 if(rowList[i][j].gameObject.GetComponent<HexCell>().CheckNeighbourColor())
+                 {
+                     return true;
+                 }
+             }
          }
-         else
-         {
-             return colors[Random.Range(0,colors.Length)];
-         }
+         return false;
      }
  }

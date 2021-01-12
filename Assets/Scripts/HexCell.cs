@@ -59,4 +59,16 @@ public class HexCell : MonoBehaviour
             CheckNeighbours();
         }
     }
+
+    public bool CheckNeighbourColor()
+    {
+        for(int i=0;i<neighbours.Count;i++)
+        {
+            if(neighbours[i].gameObject.GetComponent<HexCell>().color == this.color)
+            {
+                return true;            
+            }
+        }
+        return false;
+    }
 }
