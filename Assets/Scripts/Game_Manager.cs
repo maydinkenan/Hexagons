@@ -13,6 +13,11 @@ public class Game_Manager : MonoBehaviour
 
     private int points=0;
     private int currentLevel=2;
+
+    private int totalNumberOfCells=0;
+    private int availableNeighbourNumber=0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +28,6 @@ public class Game_Manager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddPoints()
     {
         points+=(point * currentLevel+1);
@@ -36,7 +35,8 @@ public class Game_Manager : MonoBehaviour
         CheckLevel();
     }
 
-    void CheckLevel()
+    // Checks the player points and increase the level accordingly
+    void CheckLevel() 
     {
         int levelIndex = 0;
         for(int i = 0 ; i < levelCaps.Length;i++)
@@ -63,6 +63,27 @@ public class Game_Manager : MonoBehaviour
     {
         Application.Quit();
     }
-    
 
+    // Calculates the total number of cells and resets the available neighbours to 0
+    public void SetRowsCols(int rows, int cols)
+    {
+        availableNeighbourNumber=0;
+        totalNumberOfCells= rows * cols;
+    }
+    public void CheckNeighbourAvailability(bool isAvailable)
+    {
+        if(isAvailable)
+        {
+            availableNeighbourNumber++;
+        }
+        else
+        {
+            availableNeighbourNumber--;
+        }
+
+        if(availableNeighbourNumber <= (-1*totalNumberOfCells))
+        {
+            Debug.Log("GAME END");
+        }
+    }
 }

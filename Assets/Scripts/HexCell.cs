@@ -11,6 +11,9 @@ public class HexCell : MonoBehaviour
     public List<GameObject> neighbours;
     private bool isCellDestroyed=false;
 
+
+    
+
     public void AddNeighbour(GameObject go)
     {
         if(neighbours==null)
@@ -33,6 +36,14 @@ public class HexCell : MonoBehaviour
         Game_Manager._instance.AddPoints();
         Invoke("Respawn",2.5f);
     }
+
+    public void SpawnHexCell(Vector3 scale, Color newColor)
+    {
+        color = newColor;
+        this.gameObject.GetComponent<Renderer>().material.color = color;
+        iTween.ScaleTo(this.gameObject,scale,0.5f);
+        Game_Manager._instance.CheckNeighbourAvailability(CheckNeighbourColor());
+    }
     public void Respawn()
     {
         Color newColor =  Game_Manager._instance.GetColor();
@@ -40,6 +51,7 @@ public class HexCell : MonoBehaviour
         color = newColor;
         iTween.ScaleTo(this.gameObject,new Vector3(0.42f, 0.42f, 0.42f),0.5f);
         isCellDestroyed=false;
+        
     }
 
     public void CheckNeighbours()

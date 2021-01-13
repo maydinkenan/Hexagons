@@ -12,6 +12,8 @@ public class UI_Manager : MonoBehaviour
     private int currentPoint;
 
     public CanvasGroup[] menus;
+
+    public UI_Animations[] mainMenuItems;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,5 +60,13 @@ public class UI_Manager : MonoBehaviour
         cg.ignoreParentGroups=false;
         cg.blocksRaycasts=false;
         cg.alpha=0f;
+    }
+
+    public void HideMainMenuItems()
+    {
+        for (int i = 0; i < mainMenuItems.Length; i++)
+        {
+            mainMenuItems[i].HideItemScaleDown();
+        }
     }
 }

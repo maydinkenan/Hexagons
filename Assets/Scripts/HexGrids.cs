@@ -14,14 +14,12 @@
     private Vector3 v3Pos; 
     private Vector3 v3Scale = new Vector3(0.42f, 0.42f, 0.42f);
     public List<List<GameObject>> rowList;
-    void Start () 
-    {
-    //GenerateGrid();    
-        
-    }
+    
 
     public void GenerateGrid()
     {
+        Game_Manager._instance.SetRowsCols(rows,cols);
+
         rowList = new List<List<GameObject>>();
         // Distance the rows are apart Sqrt(objDist^2 - (objDist/2)^2)
         float fT = ((objDistance * objDistance) - ((objDistance * objDistance * 0.25f)));
@@ -45,13 +43,14 @@
                 go.transform.parent=this.transform;
                 go.transform.name+= " "+i+" - "+j;
                 v3Pos.x += objDistance;         
-                Color tempColor = Game_Manager._instance.GetColor();
-                go.GetComponent<Renderer>().material.color=tempColor;
-                go.GetComponent<HexCell>().color = tempColor;
+                Color cellColor = Game_Manager._instance.GetColor();
+                HexCell hc = go.GetComponent<HexCell>();
+
+                hc.SpawnHexCell(v3Scale,cellColor);
                 col.Add(go);
                 if(j!=0) // Adds Neighbour to the previous Cell in the Column
                 {
-                    go.GetComponent<HexCell>().AddNeighbour(col[j-1]);
+                    hc.AddNeighbour(col[j-1]);
                 }
                 
                 if(i>0) // Adds Neighbour to the previous Cells in the previous Row
@@ -59,12 +58,12 @@
                     if(i%2==1)
                     {
                         int index = Mathf.Clamp(j-1,0,rows-1);
-                        go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][index]);
+                        hc.AddNeighbour(rowList[i-1][index]);
                     }
                     else
                     {
                         int index = Mathf.Clamp(j+1,0,rows-1);
-                        go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][index]);
+                        hc.AddNeighbour(rowList[i-1][index]);
                     }
                     go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][j]);
                 }
@@ -80,16 +79,16 @@
 
      bool CheckNeighbourAvailability()
      {
-         for(int i = 0; i<rows ; i++)
-         {
-             for(int j =0 ; j<cols ; j++)
-             {
-                 if(rowList[i][j].gameObject.GetComponent<HexCell>().CheckNeighbourColor())
-                 {
-                     return true;
-                 }
-             }
-         }
-         return false;
+        for(int i = 0; i<rows ; i++)
+        {
+            for(int j =0 ; j<cols ; j++)
+            {
+                if(rowList[i][j].gameObject.GetComponent<HexCell>().CheckNeighbourColor())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
      }
  }
