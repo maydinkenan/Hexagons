@@ -11,7 +11,15 @@ public class SaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-       
+       if(!_instance)
+       {
+           _instance=this;
+       }
+    }
+
+    void Start()
+    {
+        OnLoadState();
     }
 
     // Update is called once per frame
@@ -29,11 +37,12 @@ public class SaveManager : MonoBehaviour
 
     public void OnSaveState()
     {
-        PlayerProfile profile = new PlayerProfile();
-        SettingsProfile settings = new SettingsProfile();
-        currrentSaveData = new SaveData();
-        profile.highScore = 0;
-        currrentSaveData.profile = profile;
+        //PlayerProfile profile = new PlayerProfile();
+        //SettingsProfile settings = new SettingsProfile();
+        //currrentSaveData = new SaveData();
+        //profile.highScore = 0;
+        
+        //currrentSaveData.profile = profile;
 
         SerializationManager.Save(saveText,currrentSaveData);
     }
@@ -45,6 +54,7 @@ public class SaveManager : MonoBehaviour
     public void OnLoadState()
     {
         string path = Application.persistentDataPath + "/saves/" + saveText + ".save";
+        currrentSaveData = new SaveData();
         currrentSaveData = (SaveData)SerializationManager.Load(path);
 
         LoadMusic(currrentSaveData.settings.musicOn);
@@ -84,5 +94,14 @@ public class SaveManager : MonoBehaviour
         }
 
         currrentSaveData.settings.AdjustFX(newvalue);
+    }
+    /// <summary>
+    /// Returns True if the newPoints is higher than the previous one
+    /// </summary>
+    /// <param name="newPoints"></param>
+    /// <returns></returns>
+    public bool AdjustPoints(int newPoints)
+    {
+        return currrentSaveData.profile.UpdateHighScore(newPoints);
     }
 }

@@ -8,4 +8,10 @@ public class SaveData
 
     public PlayerProfile profile; 
    public SettingsProfile settings;
+
+   public SaveData()
+   {
+       profile = new PlayerProfile();
+       settings = new SettingsProfile();
+   }
 }

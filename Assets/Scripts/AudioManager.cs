@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
         {
             musicSource.volume=0.0f;
         }
-
+        SaveManager._instance.AdjustMusic(newValue);
     }
 /// <summary>
 /// Turns on and off the Effects sounds 

@@ -5,16 +5,29 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerProfile 
 {
-   public bool musicOnOff;
-   public bool fxOnOff;
    public int highScore;
    
-   public void UpdateHighScore(int newHighScore)
+
+   public PlayerProfile()
+   {
+       highScore=0;
+       
+   }
+
+   /// <summary>
+   /// Checks if the new score is higher than the previous highscore and returns true if it is
+   /// </summary>
+   /// <param name="newHighScore"></param>
+   /// <returns></returns>
+   public bool UpdateHighScore(int newHighScore)
    {
        if(highScore<newHighScore)
        {
            highScore = newHighScore;
+           return true;
        }
+       
+       return false;
    }
 
 

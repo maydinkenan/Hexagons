@@ -8,6 +8,12 @@ public class SettingsProfile
     public bool fxOn;
     public int languageID;
 
+    public SettingsProfile()
+    {
+        musicOn=true;
+        fxOn=true;
+        languageID=0;
+    }
     public void AdjustMusic(bool newValue)
     {
         musicOn = newValue;

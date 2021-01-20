@@ -33,6 +33,7 @@ public class Game_Manager : MonoBehaviour
         points+=(point * currentLevel+1);
         UI_Manager._instance.UpdatePoints(points);
         CheckLevel();
+        SaveManager._instance.AdjustPoints(points);
     }
 
     // Checks the player points and increase the level accordingly

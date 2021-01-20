@@ -18,6 +18,7 @@ public class Level_Manager : MonoBehaviour
 
     public void RestartLevel()
     {
+        SaveManager._instance.OnSaveState();
         SceneManager.LoadScene(0);
     }
 }
