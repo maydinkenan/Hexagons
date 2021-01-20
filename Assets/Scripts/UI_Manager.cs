@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 public class UI_Manager : MonoBehaviour
 {
     public static UI_Manager _instance;
@@ -13,24 +14,45 @@ public class UI_Manager : MonoBehaviour
 
     public CanvasGroup[] menus;
 
+/// <summary>
+/// UI elements in the main menu
+/// </summary>
     public UI_Animations[] mainMenuItems;
+    
+    public UnityEvent mainMenuHideEvent;
+
+    public float minTime=0.5f;
+    public float maxTime =1.5f;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(!_instance)
         {
             _instance=this;
         }
+        
+    }
+
+    void Start()
+    {
         ShowCanvasGroup(0);
     }
 
 
-
+    /// <summary>
+    /// Updates Points Text in the UI
+    /// </summary>
+    /// <param name="newPoint"></param>
     public void UpdatePoints(int newPoint)
     {
         pointsText.text = newPoint.ToString();
     }
 
+    /// <summary>
+    /// Shows selected id canvas group in the UI and hides others instantly
+    /// </summary>
+    /// <param name="canvasID">ID of the canvas</param> 
     public void ShowCanvasGroup(int canvasID)
     {
         for(int i = 0; i<menus.Length;i++)
@@ -44,6 +66,18 @@ public class UI_Manager : MonoBehaviour
                 HideCanvas(menus[i]);
             }
         }
+    }
+
+    public IEnumerator ShowCanvasGroupWait(int canvasID)
+    {
+        yield return new WaitForSeconds(maxTime);
+        ShowCanvasGroup(canvasID);
+    }
+
+    public void ShowCanvasGroupCoroutine(int canvasID)
+    {
+        IEnumerator coroutine = ShowCanvasGroupWait(canvasID);
+        StartCoroutine(coroutine);
     }
 
     void ShowCanvas(CanvasGroup cg)
@@ -66,7 +100,19 @@ public class UI_Manager : MonoBehaviour
     {
         for (int i = 0; i < mainMenuItems.Length; i++)
         {
-            mainMenuItems[i].HideItemScaleDown();
+            mainMenuItems[i].HideItemScaleDown(minTime,maxTime);
         }
+
+        mainMenuHideEvent.Invoke();
+    }
+
+    public float GetMinTime()
+    {
+        return minTime;
+    }
+
+    public float GetMaxTime()
+    {
+        return maxTime;
     }
 }

@@ -62,7 +62,7 @@
                     }
                     else
                     {
-                        int index = Mathf.Clamp(j+1,0,rows-1);
+                        int index = Mathf.Clamp(j+1,0,cols-1);
                         hc.AddNeighbour(rowList[i-1][index]);
                     }
                     go.gameObject.GetComponent<HexCell>().AddNeighbour(rowList[i-1][j]);

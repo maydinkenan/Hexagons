@@ -10,47 +10,41 @@ public class UI_ChangeImage : MonoBehaviour
     public Sprite offSprite;
     public Image audioImage;
 
-    public AudioSource audioSource;
+    public static UI_ChangeImage _audioChangeImageInstance;
 
-    void Start()
+    void Awake()
     {
-        CheckAudioSource();
-        Debug.Log("Check Image start");
+        if(!_audioChangeImageInstance)
+        {
+            _audioChangeImageInstance=this;
+        }
     }
-    public void ChangeImage()
+
+
+    public void AdjustImage()
     {
-        CheckAudioSource();
         onOff = !onOff;
+        ChangeImage(onOff);
+    }
+
+
+    public void ChangeImage(bool newValue)
+    {
+        
+        onOff = newValue;
         if(onOff)
         {
             audioImage.sprite = onSprite;
-            
-            audioSource.volume=1f;
         }
         else
         {
-            audioImage.sprite = offSprite;
-            audioSource.volume=0f;
+            audioImage.sprite = offSprite;  
         }
+
+        AudioManager._instance.AdjustMusic(onOff);
     }
 
 
-    void CheckAudioSource()
-    {
-        if(!audioSource)
-        {
-            audioSource =  GameObject.FindGameObjectWithTag("music").GetComponent<AudioSource>();
-            if(audioSource.volume==0f)
-            {
-                onOff=false;
-                audioImage.sprite = offSprite;
-            }
-            else
-            {
-                onOff=true;
-                audioImage.sprite = onSprite;
-            }
-        }
-    }
+    
 }
 

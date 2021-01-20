@@ -7,7 +7,9 @@ public class UI_Animations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ShowItemScaleUp();
+        float minTime = UI_Manager._instance.GetMinTime();
+        float maxTime = UI_Manager._instance.GetMaxTime();
+        ShowItemScaleUp(minTime,maxTime);
     }
 
     // Update is called once per frame
@@ -17,13 +19,13 @@ public class UI_Animations : MonoBehaviour
     }
 
 
-    public void ShowItemScaleUp()
+    public void ShowItemScaleUp(float minTime,float maxTime)
     {
-        iTween.ScaleFrom(this.gameObject,Vector3.zero,Random.Range(0.1f,1f));
+        iTween.ScaleFrom(this.gameObject,Vector3.zero,Random.Range(minTime,maxTime));
     }
 
-    public void HideItemScaleDown()
+    public void HideItemScaleDown(float minTime, float maxTime)
     {
-        iTween.ScaleTo(this.gameObject,Vector3.zero,0.5f);
+        iTween.ScaleTo(this.gameObject,Vector3.zero,Random.Range(minTime,maxTime));
     }
 }
