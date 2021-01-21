@@ -6,13 +6,13 @@ public class SettingsProfile
 {
     public bool musicOn;
     public bool fxOn;
-    public int languageID;
+    public LocalisationSystem.Language language;
 
     public SettingsProfile()
     {
         musicOn=true;
         fxOn=true;
-        languageID=0;
+        language = LocalisationSystem.Language.English;
     }
     public void AdjustMusic(bool newValue)
     {

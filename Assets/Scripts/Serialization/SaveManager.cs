@@ -37,12 +37,6 @@ public class SaveManager : MonoBehaviour
 
     public void OnSaveState()
     {
-        //PlayerProfile profile = new PlayerProfile();
-        //SettingsProfile settings = new SettingsProfile();
-        //currrentSaveData = new SaveData();
-        //profile.highScore = 0;
-        
-        //currrentSaveData.profile = profile;
 
         SerializationManager.Save(saveText,currrentSaveData);
     }
@@ -56,6 +50,9 @@ public class SaveManager : MonoBehaviour
         string path = Application.persistentDataPath + "/saves/" + saveText + ".save";
         currrentSaveData = new SaveData();
         currrentSaveData = (SaveData)SerializationManager.Load(path);
+        
+        LocalisationSystem.language = currrentSaveData.settings.language;
+        UI_LanguageSelection._instance.ChangeLanguage(LocalisationSystem.language);
 
         LoadMusic(currrentSaveData.settings.musicOn);
 
@@ -73,6 +70,7 @@ public class SaveManager : MonoBehaviour
         currrentSaveData.settings.AdjustMusic(newValue);
 
     }
+    
 
     public void LoadMusic(bool musicValue)
     {
@@ -103,5 +101,12 @@ public class SaveManager : MonoBehaviour
     public bool AdjustPoints(int newPoints)
     {
         return currrentSaveData.profile.UpdateHighScore(newPoints);
+    }
+
+    public void AdjustLanguage(LocalisationSystem.Language newLanguage)
+    {
+        currrentSaveData.settings.language = newLanguage;
+        LocalisationSystem.language = newLanguage;
+        OnSaveState();
     }
 }
