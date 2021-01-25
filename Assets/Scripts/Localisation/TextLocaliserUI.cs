@@ -34,6 +34,5 @@ public class TextLocaliserUI : MonoBehaviour
         textField = gameObject.GetComponent<TextMeshProUGUI>();
         string value  = LocalisationSystem.GetLocalisedValue(_key);
         textField.text = value;
-        Debug.Log(" key "+key+" - value = "+value);
     }
 }
