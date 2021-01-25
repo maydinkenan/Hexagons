@@ -36,6 +36,18 @@ public class UI_LanguageSelection : MonoBehaviour
             case LocalisationSystem.Language.Turkish:
                 selectedLanguageImage.sprite = languageSprites[1];
                 break;
+            case LocalisationSystem.Language.German:
+                selectedLanguageImage.sprite = languageSprites[2];
+                break;
+            case LocalisationSystem.Language.Dutch:
+                selectedLanguageImage.sprite = languageSprites[3];
+                break;
+            case LocalisationSystem.Language.Spanish:
+                selectedLanguageImage.sprite = languageSprites[4];
+                break;
+            case LocalisationSystem.Language.French:
+                selectedLanguageImage.sprite = languageSprites[5];
+                break;
             default:
                 selectedLanguageImage.sprite = languageSprites[0];
                 break;

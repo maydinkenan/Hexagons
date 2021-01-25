@@ -1,4 +1,6 @@
-"key","en","tr"
-"main_menu_play","PLAY!","OYNA!"
-"main_menu_quit","QUIT\n :(","ÇIK\n :("
-"in_game_restart","RESTART","TEKRAR BAŞLAT"
+"key","en","tr","de","fr","es","nl"
+"main_menu_play","PLAY!","OYNA!","SPIEL!","fr_play","es_play","nl_play"
+"main_menu_quit","QUIT\n :(","ÇIK\n :(","VERLASSEN :(","fr_quit","es_quit","nl_quit"
+"in_game_restart","RESTART","TEKRAR BAŞLAT","NEU STARTEN","fr_restart","es_restart","nl_restart"
+
+

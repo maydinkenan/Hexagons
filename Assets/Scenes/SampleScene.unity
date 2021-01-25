@@ -1550,7 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f45bb88721f72469a23c8075c92a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonLanguage: 0
+  buttonLanguage: 5
   _ui_languageSelection: {fileID: 861862746}
 --- !u!114 &383904973
 MonoBehaviour:
@@ -3014,7 +3014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f45bb88721f72469a23c8075c92a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonLanguage: 1
+  buttonLanguage: 2
   _ui_languageSelection: {fileID: 861862746}
 --- !u!114 &704161906
 MonoBehaviour:
@@ -4463,6 +4463,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8e655c5a582226145ad753c12a53588b, type: 3}
   - {fileID: 21300000, guid: 119f0b5b0c0594947bc590e4f09cc28d, type: 3}
   - {fileID: 21300000, guid: a8fc93515ce33ee4fb0219435210fff2, type: 3}
+  - {fileID: 21300000, guid: b6f5036477c75714e97d598021a57832, type: 3}
   languageButtons: {fileID: 583940397}
 --- !u!1 &863820691 stripped
 GameObject:
@@ -5317,7 +5318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f45bb88721f72469a23c8075c92a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonLanguage: 1
+  buttonLanguage: 4
   _ui_languageSelection: {fileID: 861862746}
 --- !u!114 &1036727853
 MonoBehaviour:
@@ -10726,7 +10727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f45bb88721f72469a23c8075c92a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonLanguage: 1
+  buttonLanguage: 3
   _ui_languageSelection: {fileID: 861862746}
 --- !u!114 &1519429990
 MonoBehaviour:
