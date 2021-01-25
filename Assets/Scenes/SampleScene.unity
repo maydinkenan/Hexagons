@@ -2150,6 +2150,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05739c7835a581f41b479474b5353441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &496062275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496062276}
+  - component: {fileID: 496062277}
+  m_Layer: 0
+  m_Name: Cells Movement Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &496062276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496062275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2103928913}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &496062277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496062275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f0a6eb0ba78df44a99bc75540a6e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 0.1
+  ui_cellsObject: {fileID: 211713556}
+  canMove: 1
 --- !u!1 &496927961 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1978910551481771104, guid: bf6308e9a4f3e4643870fddc37207a0c,
@@ -11837,6 +11883,7 @@ MonoBehaviour:
   - {fileID: 2004422626}
   - {fileID: 1939000277}
   blurLayer: {fileID: 2066782958}
+  _ui_cell_movement: {fileID: 496062277}
 --- !u!1 &1741965416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1104705865549552115, guid: bf6308e9a4f3e4643870fddc37207a0c,
@@ -13621,6 +13668,7 @@ Transform:
   m_Children:
   - {fileID: 861862745}
   - {fileID: 1733511029}
+  - {fileID: 496062276}
   m_Father: {fileID: 1151083734}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13651,6 +13699,7 @@ MonoBehaviour:
   - {fileID: 471344895}
   - {fileID: 944642377}
   - {fileID: 2123080942}
+  _ui_LangunageSelection: {fileID: 861862746}
   mainMenuHideEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -13770,7 +13819,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 861862746}
-        m_MethodName: ShowLanguageButtons
+        m_MethodName: ShowHideLanguage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

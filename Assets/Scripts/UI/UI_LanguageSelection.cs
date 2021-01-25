@@ -60,6 +60,18 @@ public class UI_LanguageSelection : MonoBehaviour
        //UpdateLanguage();
     }
 
+
+    public void ShowHideLanguage()
+    {
+        if(languageButtons.alpha==1f)
+        {
+            HideLanguageButtons();
+        }
+        else
+        {
+            ShowLanguageButtons();
+        }
+    }
     
 
     public void UpdateLanguage()

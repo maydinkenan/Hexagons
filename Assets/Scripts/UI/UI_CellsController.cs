@@ -8,14 +8,25 @@ public class UI_CellsController : MonoBehaviour
     public UI_Cells[] cells;
     public CanvasGroup blurLayer;
 
-    void Start()
-    {
-        HideRandomCells();
-    }
+    private float lastUpdateTime=0f;
+    private float updateRate=5f;
+    private bool canHideRandomCells=true;
 
+    public UI_CellMovement _ui_cell_movement;
+
+
+    void Update()
+    {
+        HideRandomCellsUpdate();
+    }
+/// <summary>
+/// Hides all cells, stops movement animation and random hiding animations, also hides the blur layer
+/// </summary>
     public void HideAllCells()
     {
-        CancelInvoke();
+        canHideRandomCells=false;
+        _ui_cell_movement.StopMovement();
+       
         for(int i = 0 ; i<cells.Length; i++)
         {
             cells[i].HidePermanent();
@@ -27,22 +38,24 @@ public class UI_CellsController : MonoBehaviour
         
     }
 
-    public void HideRandomCells()
+    
+    public void HideRandomCellsUpdate()
     {
-        for(int i = 0; i<10;i++)
+        if(canHideRandomCells)
         {
-            cells[Random.Range(0,cells.Length)].Hide();
+            if(Time.time>=lastUpdateTime)
+            {
+                lastUpdateTime = Time.time + updateRate;
+                for(int i = 0; i < 10; i++)
+                {
+                    cells[Random.Range(0,cells.Length)].Hide();
+                }
+            }
         }
-        Invoke("HideRandomCells",5f);
-    }
-
-    public void StopAnimation()
-    {
-
     }
 
 
-    void Move()
-    {}
+
+
     
 }

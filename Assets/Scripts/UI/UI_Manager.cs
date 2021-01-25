@@ -18,6 +18,7 @@ public class UI_Manager : MonoBehaviour
 /// UI elements in the main menu
 /// </summary>
     public UI_Animations[] mainMenuItems;
+    public UI_LanguageSelection _ui_LangunageSelection;
     
     public UnityEvent mainMenuHideEvent;
 
@@ -94,6 +95,7 @@ public class UI_Manager : MonoBehaviour
         cg.ignoreParentGroups=false;
         cg.blocksRaycasts=false;
         cg.alpha=0f;
+        _ui_LangunageSelection.HideLanguageButtons();
     }
 
     public void HideMainMenuItems()
