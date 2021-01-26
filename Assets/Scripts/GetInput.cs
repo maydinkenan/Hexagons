@@ -8,6 +8,7 @@ public class GetInput : MonoBehaviour
     private float lastClickTime=0f;
 
     private GameObject tappedObject;
+    
     void Update()
     {
         GetDoubleClick();
@@ -15,7 +16,7 @@ public class GetInput : MonoBehaviour
     }
     void GetDoubleClick()
     {
-#if UNITY_STANDALONE        
+#if UNITY_STANDALONE || UNITY_EDITOR       
         if(Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -26,6 +27,7 @@ public class GetInput : MonoBehaviour
                 if(hit.transform.gameObject.tag=="cell")
                 {
                     //hit.transform.gameObject.GetComponent<HexCell>().CheckNeighbours();
+                    
                     GetClicks(hit.transform.gameObject);
                 }
             }
@@ -44,6 +46,7 @@ public class GetInput : MonoBehaviour
                 if(hit.transform.gameObject.tag=="cell")
                 {
                     //hit.transform.gameObject.GetComponent<HexCell>().CheckNeighbours();
+                    
                     GetClicks(hit.transform.gameObject);
                 }
             }

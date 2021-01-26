@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlayerProfile 
 {
    public int highScore;
-   
+   public List<List<HexCell>> gameGrid;
+   public bool isGameSaved=false;
 
    public PlayerProfile()
    {
        highScore=0;
-       
+       gameGrid = new List<List<HexCell>>();
    }
 
    /// <summary>
@@ -30,8 +31,26 @@ public class PlayerProfile
        return false;
    }
 
+   
+   public bool GameSaveCheck()
+   {
+       return isGameSaved;
+   }
 
-   //public List<HexCell> hexagons;
+   public  List<List<HexCell>> GetGameGrid()
+   {
+       isGameSaved=false;
+       return gameGrid;
+   }
+
+   public void SaveGameGrid( List<List<HexCell>> _gameGrid)
+   {
+       isGameSaved=true;
+       gameGrid = _gameGrid;
+   }
+
+
+   
 
    
 }

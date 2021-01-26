@@ -17,6 +17,8 @@ public class Game_Manager : MonoBehaviour
     private int totalNumberOfCells=0;
     private int availableNeighbourNumber=0;
 
+    private bool isGameOn=false;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -57,11 +59,14 @@ public class Game_Manager : MonoBehaviour
 
     public void StartGame()
     {
+        isGameOn=true;
         hexGrid.GenerateGrid();
+        
     }
 
     public void QuitGame()
     {
+        
         Application.Quit();
     }
 
