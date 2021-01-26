@@ -25,14 +25,7 @@ public class SaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            OnSaveState();
-        }
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            OnLoadState();
-        }
+        
     }
 
     public void OnSaveState()
@@ -48,6 +41,7 @@ public class SaveManager : MonoBehaviour
     public void OnLoadState()
     {
         string path = Application.persistentDataPath + "/saves/" + saveText + ".save";
+
         currrentSaveData = new SaveData();
         currrentSaveData = (SaveData)SerializationManager.Load(path);
         

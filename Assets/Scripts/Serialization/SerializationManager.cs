@@ -14,7 +14,9 @@ public class SerializationManager
         if(!Directory.Exists(Application.persistentDataPath + "/saves"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/saves");
+            
         }
+        
         
 
         string path = Application.persistentDataPath + "/saves/" + saveName + ".save";
@@ -34,7 +36,8 @@ public class SerializationManager
     {
         if(!File.Exists(path))
         {
-            return null;
+            Debug.Log("No Save File Found, Creating New Save File");
+            return new SaveData();
         }
         
         BinaryFormatter formatter = GetBinaryFormatter();
