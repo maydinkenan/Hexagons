@@ -4,10 +4,26 @@ using UnityEngine;
 
 public class GetInput : MonoBehaviour
 {
+    public enum InputType{
+        Single_Click,
+        Double_Click
+    };
+
+    public static GetInput _instance;
+
+    public InputType inputType = InputType.Single_Click;
     private const float doubleClickTime = 0.2f;
     private float lastClickTime=0f;
 
     private GameObject tappedObject;
+
+    void Awake()
+    {
+        if(!_instance)
+        {
+            _instance = this;
+        }
+    }
     
     void Update()
     {
@@ -57,28 +73,37 @@ public class GetInput : MonoBehaviour
 
     void GetClicks(GameObject go)
     {
-        float timeSinceLastClick = Time.time - lastClickTime;
-        if(timeSinceLastClick <= doubleClickTime)
+
+        if(inputType == InputType.Single_Click)
         {
-            //Double Click
-           
-            if(tappedObject == go)
-            {
-                go.GetComponent<HexCell>().CheckNeighbours();
-            }
-            else
-            {
-                tappedObject=go;
-            }
+            go.GetComponent<HexCell>().CheckNeighbours();
         }
         else
         {
-            //Single Click
+            float timeSinceLastClick = Time.time - lastClickTime;
+            if(timeSinceLastClick <= doubleClickTime)
+            {
+                //Double Click
             
-            tappedObject=go;
+                if(tappedObject == go)
+                {
+                    go.GetComponent<HexCell>().CheckNeighbours();
+                }
+                else
+                {
+                    tappedObject=go;
+                }
+            }
+            else
+            {
+                //Single Click
+                
+                tappedObject=go;
+                
+            }
             
+            lastClickTime = Time.time;
         }
         
-        lastClickTime = Time.time;
     }
 }

@@ -22,12 +22,6 @@ public class SaveManager : MonoBehaviour
         OnLoadState();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnSaveState()
     {
 
@@ -47,6 +41,8 @@ public class SaveManager : MonoBehaviour
         
         LocalisationSystem.language = currrentSaveData.settings.language;
         UI_LanguageSelection._instance.ChangeLanguage(LocalisationSystem.language);
+
+        GetInput._instance.inputType = currrentSaveData.settings.inputType;
 
         LoadMusic(currrentSaveData.settings.musicOn);
 
@@ -103,4 +99,19 @@ public class SaveManager : MonoBehaviour
         LocalisationSystem.language = newLanguage;
         OnSaveState();
     }
+
+    void LoadGame(PlayerProfile _playerProfile)
+    {
+        if(_playerProfile.GetGameID() != string.Empty)
+        {
+            Debug.Log("Loading Game");
+        }
+    }
+
+    public void AdjustInputType(GetInput.InputType newInputType)
+    {
+        currrentSaveData.settings.AdjustInputType(newInputType);
+    }
+
+    
 }

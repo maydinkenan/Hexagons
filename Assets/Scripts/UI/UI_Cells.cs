@@ -48,8 +48,9 @@ public class UI_Cells : MonoBehaviour
     public void HidePermanent()
     {
         iTween.ScaleTo(this.gameObject,iTween.Hash("scale",Vector3.zero,"speed",0.5f));
-        iTween.StopByName("hidecell");
-        iTween.StopByName("showcell");
+        
+        iTween.StopByName(this.gameObject,"hidecell");
+        iTween.StopByName(this.gameObject,"showcell");
     }
 
     private float GetRandomDelay()

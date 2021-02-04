@@ -27,10 +27,12 @@ public class UI_CellsController : MonoBehaviour
         canHideRandomCells=false;
         _ui_cell_movement.StopMovement();
        
-        for(int i = 0 ; i<cells.Length; i++)
-        {
-            cells[i].HidePermanent();
-        }
+        // for(int i = 0 ; i<cells.Length; i++)
+        // {
+        //     cells[i].HidePermanent();
+        // }
+
+        StartCoroutine(HideAllCellsCoroutine());
         blurLayer.alpha=0f;
         blurLayer.blocksRaycasts=false;
         blurLayer.interactable=false;
@@ -54,6 +56,19 @@ public class UI_CellsController : MonoBehaviour
         }
     }
 
+    private IEnumerator HideAllCellsCoroutine()
+    {
+        int counter =0;
+        float waitTime = 0.001f;
+        while (counter < cells.Length)
+        {
+            yield return new WaitForSeconds(waitTime);
+            cells[counter].HidePermanent();
+
+            
+            counter++;
+        }
+    }
 
 
 
