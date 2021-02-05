@@ -85,6 +85,8 @@ public class UI_LanguageSelection : MonoBehaviour
         languageButtons.blocksRaycasts=true;
         languageButtons.interactable=true;
         languageButtons.ignoreParentGroups=true;
+
+        UI_Options_Manager._instance.HideOptions();
     }
 
     public void HideLanguageButtons()

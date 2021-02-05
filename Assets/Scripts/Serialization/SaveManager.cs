@@ -42,7 +42,7 @@ public class SaveManager : MonoBehaviour
         LocalisationSystem.language = currrentSaveData.settings.language;
         UI_LanguageSelection._instance.ChangeLanguage(LocalisationSystem.language);
 
-        GetInput._instance.inputType = currrentSaveData.settings.inputType;
+        GetInput._instance.LoadInputType( currrentSaveData.settings.inputType) ;
 
         LoadMusic(currrentSaveData.settings.musicOn);
 

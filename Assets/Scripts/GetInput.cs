@@ -103,7 +103,16 @@ public class GetInput : MonoBehaviour
             }
             
             lastClickTime = Time.time;
+        } 
+    }
+    public void LoadInputType(InputType newInputType)
+    {
+        inputType = newInputType;
+        int clickMode=1;
+        if(newInputType == InputType.Double_Click)
+        {
+            clickMode =2;
         }
-        
+        UI_Options_Manager._instance.SelectClickMode(clickMode);
     }
 }

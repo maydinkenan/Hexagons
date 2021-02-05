@@ -47,7 +47,8 @@ public class UI_Manager : MonoBehaviour
     /// <param name="newPoint"></param>
     public void UpdatePoints(int newPoint)
     {
-        pointsText.text = newPoint.ToString();
+        //pointsText.text = newPoint.ToString();
+        UI_Points._instance.AddPoints(newPoint);
     }
 
     /// <summary>
