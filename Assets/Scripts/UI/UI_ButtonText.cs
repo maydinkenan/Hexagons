@@ -6,7 +6,7 @@ using TMPro;
 public class UI_ButtonText : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public void Apply(UI_SelectedText newValue)
+    public void ApplyTextEffect(UI_SelectedText newValue)
     {
         text.fontStyle = newValue.fontStyles;
         text.fontSize = newValue.fontSize;

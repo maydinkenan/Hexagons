@@ -76,20 +76,20 @@ public class UI_Options_Manager : MonoBehaviour
         if(clickMode == 1)
         {
             _getInput.inputType = GetInput.InputType.Single_Click;
-            singleClickButton.Apply(selectedText);
-            doubleClickButton.Apply(unSelectedText);
+            singleClickButton.ApplyTextEffect(selectedText);
+            doubleClickButton.ApplyTextEffect(unSelectedText);
         }
         else if(clickMode == 2)
         {
             _getInput.inputType = GetInput.InputType.Double_Click;
-            singleClickButton.Apply(unSelectedText);
-            doubleClickButton.Apply(selectedText);
+            singleClickButton.ApplyTextEffect(unSelectedText);
+            doubleClickButton.ApplyTextEffect(selectedText);
         }
         else
         {
             _getInput.inputType = GetInput.InputType.Single_Click;
-            singleClickButton.Apply(selectedText);
-            doubleClickButton.Apply(unSelectedText);
+            singleClickButton.ApplyTextEffect(selectedText);
+            doubleClickButton.ApplyTextEffect(unSelectedText);
         }
         SaveManager._instance.AdjustInputType(_getInput.inputType);
         HideOptions();

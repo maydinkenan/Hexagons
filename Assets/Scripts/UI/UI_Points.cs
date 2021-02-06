@@ -56,9 +56,9 @@ public class UI_Points : MonoBehaviour
   
         while(currentPoint<goalPoint)
         {
-            yield return new WaitForSeconds(0.3f);
             currentPoint++;
             pointsText.text = currentPoint.ToString();
+            yield return new WaitForSeconds(0.3f);
         }
         
     }

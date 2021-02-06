@@ -111,6 +111,7 @@ public class SaveManager : MonoBehaviour
     public void AdjustInputType(GetInput.InputType newInputType)
     {
         currrentSaveData.settings.AdjustInputType(newInputType);
+        OnSaveState();
     }
 
     

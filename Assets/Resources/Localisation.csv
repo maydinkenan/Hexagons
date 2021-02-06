@@ -1,6 +1,4 @@
 "key","en","tr","de","fr","es","nl"
-"main_menu_play","PLAY!","OYNA!","SPIEL!","fr_play","es_play","nl_play"
-"main_menu_quit","QUIT\n :(","ÇIK\n :(","VERLASSEN :(","fr_quit","es_quit","nl_quit"
-"in_game_restart","RESTART","TEKRAR BAŞLAT","NEU STARTEN","fr_restart","es_restart","nl_restart"
-
-
+"main_menu_play","PLAY!","OYNA!","SPIEL!","JOUER!","JUGAR!","SPEEL!"
+"main_menu_quit","QUIT :(","ÇIK :(","VERLASSEN :(","QUITTER :(","DEJAR :(","STOPPEN :("
+"in_game_restart","RESTART","TEKRAR BAŞLAT","NEU STARTEN","RED�MARRER","REANUDAR","HERSTARTEN"

@@ -29,9 +29,26 @@ public class Application_Manager : MonoBehaviour
     {
 
     }
-
+    /// <summary>
+    /// Saves Game State
+    /// </summary>
     void OnApplicationQuit()
     {
         
+    }
+
+    /// <summary>
+    /// Loads the last game
+    /// </summary>
+    public void ContinueLastGame()
+    {
+
+    }
+    /// <summary>
+    /// Deletes the last game
+    /// </summary>
+    public void DontContinueLastGame()
+    {
+
     }
 }

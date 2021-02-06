@@ -42,7 +42,7 @@ public class UI_Manager : MonoBehaviour
 
 
     /// <summary>
-    /// Updates Points Text in the UI
+    /// Updates Points Text in the UI by sending the value to the UI_Points
     /// </summary>
     /// <param name="newPoint"></param>
     public void UpdatePoints(int newPoint)
