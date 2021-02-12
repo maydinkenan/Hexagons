@@ -46,6 +46,8 @@ public class SaveManager : MonoBehaviour
 
         LoadMusic(currrentSaveData.settings.musicOn);
 
+        LoadPlayerHighScore(currrentSaveData.profile.highScore);
+
 
     }
 
@@ -90,7 +92,15 @@ public class SaveManager : MonoBehaviour
     /// <returns></returns>
     public bool AdjustPoints(int newPoints)
     {
-        return currrentSaveData.profile.UpdateHighScore(newPoints);
+        if( currrentSaveData.profile.UpdateHighScore(newPoints))
+        {
+            OnSaveState();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void AdjustLanguage(LocalisationSystem.Language newLanguage)
@@ -114,5 +124,9 @@ public class SaveManager : MonoBehaviour
         OnSaveState();
     }
 
+    public void LoadPlayerHighScore(int _highscore)
+    {
+        HighScore_Manager._instance.SetHighScore(_highscore);
+    }
     
 }

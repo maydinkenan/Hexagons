@@ -19,7 +19,9 @@ public class UI_Manager : MonoBehaviour
 /// </summary>
     public UI_Animations[] mainMenuItems;
     public UI_LanguageSelection _ui_LangunageSelection;
-    
+    public HighScore_Manager _highscoreManager;
+
+    [Space(20)]
     public UnityEvent mainMenuHideEvent;
 
     public float minTime=0.5f;
