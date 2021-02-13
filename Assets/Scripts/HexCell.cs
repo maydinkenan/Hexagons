@@ -33,7 +33,7 @@ public class HexCell : MonoBehaviour
     {
         isCellDestroyed=true;
         iTween.ScaleTo(this.gameObject,Vector3.zero,0.5f);
-        Game_Manager._instance.AddPoints();
+        //Game_Manager._instance.AddPoints();
         Invoke("Respawn",2.5f);
     }
 
@@ -66,10 +66,24 @@ public class HexCell : MonoBehaviour
     {
         if(colorCheck == color && !isCellDestroyed)
         {
-
+            Game_Manager._instance.AddNeighbourCells(this);
             Destroy();
             CheckNeighbours();
         }
+        
+    }
+
+    public void StartCheckingNeighbours()
+    {
+        foreach (GameObject neighbour in neighbours)
+        {
+            neighbour.GetComponent<HexCell>().CheckColor(color);
+            Game_Manager._instance.AddNeighbourCells(this);
+            Destroy();
+            isCellDestroyed=true;
+            
+        }
+        Game_Manager._instance.CalculatePoints();
     }
 
     public bool CheckNeighbourColor()

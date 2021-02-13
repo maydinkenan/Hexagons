@@ -19,6 +19,7 @@ public class Game_Manager : MonoBehaviour
 
     private bool isGameOn=false;
 
+    public List<HexCell> neighbours;
 
     // Start is called before the first frame update
     void Awake()
@@ -91,6 +92,28 @@ public class Game_Manager : MonoBehaviour
         if(availableNeighbourNumber <= (-1*totalNumberOfCells))
         {
             Debug.Log("GAME END");
+        }
+    }
+
+    public void CalculatePoints()
+    {
+        points+=(neighbours.Count+1 * (currentLevel+1));
+        UI_Manager._instance.UpdatePoints(points);
+        CheckLevel();
+//        Debug.Log("Add points count"+neighbours.Count+" - currentlevel="+currentLevel+1);
+        SaveManager._instance.AdjustPoints(points);
+        /*for(int i=0;i<neighbours.Count;i++)
+        {
+            neighbours[i].Destroy();
+        }*/
+        neighbours = new List<HexCell>();
+    }
+
+    public void AddNeighbourCells(HexCell cell)
+    {
+        if(!neighbours.Contains(cell))
+        {
+            neighbours.Add(cell);
         }
     }
 }

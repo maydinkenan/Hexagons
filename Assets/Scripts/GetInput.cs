@@ -42,7 +42,7 @@ public class GetInput : MonoBehaviour
                 
                 if(hit.transform.gameObject.tag=="cell")
                 {
-                    //hit.transform.gameObject.GetComponent<HexCell>().CheckNeighbours();
+                    
                     
                     GetClicks(hit.transform.gameObject);
                 }
@@ -61,7 +61,7 @@ public class GetInput : MonoBehaviour
                 
                 if(hit.transform.gameObject.tag=="cell")
                 {
-                    //hit.transform.gameObject.GetComponent<HexCell>().CheckNeighbours();
+                    
                     
                     GetClicks(hit.transform.gameObject);
                 }
@@ -76,7 +76,7 @@ public class GetInput : MonoBehaviour
 
         if(inputType == InputType.Single_Click)
         {
-            go.GetComponent<HexCell>().CheckNeighbours();
+            go.GetComponent<HexCell>().StartCheckingNeighbours();
         }
         else
         {
@@ -87,7 +87,7 @@ public class GetInput : MonoBehaviour
             
                 if(tappedObject == go)
                 {
-                    go.GetComponent<HexCell>().CheckNeighbours();
+                    go.GetComponent<HexCell>().StartCheckingNeighbours();
                 }
                 else
                 {
