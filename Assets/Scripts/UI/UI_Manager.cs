@@ -21,6 +21,8 @@ public class UI_Manager : MonoBehaviour
     public UI_LanguageSelection _ui_LangunageSelection;
     public HighScore_Manager _highscoreManager;
 
+    public CanvasGroup savedGameCG;
+
     [Space(20)]
     public UnityEvent mainMenuHideEvent;
 
@@ -119,5 +121,16 @@ public class UI_Manager : MonoBehaviour
     public float GetMaxTime()
     {
         return maxTime;
+    }
+
+    public void ShowSaveGameUI()
+    {
+        ShowCanvas(savedGameCG);
+    }
+
+    public void HideSaveGameUI()
+    {
+
+        HideCanvas(savedGameCG);
     }
 }

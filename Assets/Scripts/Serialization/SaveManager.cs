@@ -8,6 +8,8 @@ public class SaveManager : MonoBehaviour
 
     public string saveText="hexagons";
     public SaveData currrentSaveData;
+
+    List<List<HexCell>> savedGrid;
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,17 +39,23 @@ public class SaveManager : MonoBehaviour
         string path = Application.persistentDataPath + "/saves/" + saveText + ".save";
 
         currrentSaveData = new SaveData();
-        currrentSaveData = (SaveData)SerializationManager.Load(path);
+        
+        SaveData loadedData = (SaveData)SerializationManager.Load(path);
+        if(loadedData!=null)
+        {
+            currrentSaveData = loadedData;
+        }
         
         LocalisationSystem.language = currrentSaveData.settings.language;
-        UI_LanguageSelection._instance.ChangeLanguage(LocalisationSystem.language);
+        UI_LanguageSelection._instance.LoadLanguage(LocalisationSystem.language);
 
-        GetInput._instance.LoadInputType( currrentSaveData.settings.inputType) ;
+        GetInput._instance.LoadInputType( currrentSaveData.settings.inputType,false) ;
 
         LoadMusic(currrentSaveData.settings.musicOn);
 
         LoadPlayerHighScore(currrentSaveData.profile.highScore);
 
+        CheckSavedGame();
 
     }
 
@@ -129,4 +137,25 @@ public class SaveManager : MonoBehaviour
         HighScore_Manager._instance.SetHighScore(_highscore);
     }
     
+
+
+    public void CheckSavedGame()
+    {
+        savedGrid =  currrentSaveData.profile.GetGameGrid();
+        
+        if(savedGrid.Count>0)
+        {
+            Debug.Log("saved gane found "+savedGrid.Count);
+            UI_Manager._instance.ShowSaveGameUI();
+        }
+        else
+        {
+            Debug.Log("NO save game file");
+        }
+    }
+
+    public List<List<HexCell>> GetGameGrid()
+    {
+        return savedGrid;
+    }
 }
