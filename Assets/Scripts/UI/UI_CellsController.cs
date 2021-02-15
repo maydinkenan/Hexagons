@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UI_CellsController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static UI_CellsController _instance;
     public UI_Cells[] cells;
     public CanvasGroup blurLayer;
 
@@ -13,6 +13,14 @@ public class UI_CellsController : MonoBehaviour
     private bool canHideRandomCells=true;
 
     public UI_CellMovement _ui_cell_movement;
+
+    void Awake()
+    {
+        if(!_instance)
+        {
+            _instance = this;
+        }
+    }
 
 
     void Update()

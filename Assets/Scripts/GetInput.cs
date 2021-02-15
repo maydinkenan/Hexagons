@@ -105,7 +105,7 @@ public class GetInput : MonoBehaviour
             lastClickTime = Time.time;
         } 
     }
-    public void LoadInputType(InputType newInputType)
+    public void LoadInputType(InputType newInputType,bool save)
     {
         inputType = newInputType;
         int clickMode=1;
@@ -113,6 +113,14 @@ public class GetInput : MonoBehaviour
         {
             clickMode =2;
         }
-        UI_Options_Manager._instance.SelectClickMode(clickMode);
+        if(save)
+        {
+            UI_Options_Manager._instance.SelectClickMode(clickMode);
+        }
+        else
+        {
+            UI_Options_Manager._instance.LoadClickMode(clickMode);
+        }
+        
     }
 }

@@ -66,6 +66,13 @@ public class Game_Manager : MonoBehaviour
         
     }
 
+    public void LoadGame()
+    {
+        isGameOn=true;
+        hexGrid.GenerateGrid( SaveManager._instance.GetGameGrid() );
+        hexGrid.GenerateGrid();
+    }
+
     public void QuitGame()
     {
         

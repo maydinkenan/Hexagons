@@ -26,6 +26,10 @@ public class UI_LanguageSelection : MonoBehaviour
         HideLanguageButtons();
     }
 
+    /// <summary>
+    /// Loads new language settings and saves
+    /// </summary>
+    /// <param name="newLanguage"></param>
     public void ChangeLanguage(LocalisationSystem.Language newLanguage)
     {
         switch(newLanguage)
@@ -58,6 +62,42 @@ public class UI_LanguageSelection : MonoBehaviour
         
         LanguageChanged();//Event Trigger
        //UpdateLanguage();
+    }
+
+    /// <summary>
+    /// Loads new language settings and do not save
+    /// </summary>
+    /// <param name="newLanguage"></param>
+    public void LoadLanguage(LocalisationSystem.Language newLanguage)
+    {
+       switch(newLanguage)
+        {
+            case LocalisationSystem.Language.English:
+                selectedLanguageImage.sprite = languageSprites[0];
+                break;
+            case LocalisationSystem.Language.Turkish:
+                selectedLanguageImage.sprite = languageSprites[1];
+                break;
+            case LocalisationSystem.Language.German:
+                selectedLanguageImage.sprite = languageSprites[2];
+                break;
+            case LocalisationSystem.Language.Dutch:
+                selectedLanguageImage.sprite = languageSprites[3];
+                break;
+            case LocalisationSystem.Language.Spanish:
+                selectedLanguageImage.sprite = languageSprites[4];
+                break;
+            case LocalisationSystem.Language.French:
+                selectedLanguageImage.sprite = languageSprites[5];
+                break;
+            default:
+                selectedLanguageImage.sprite = languageSprites[0];
+                break;
+        }
+        Debug.Log("Load Language "+newLanguage);
+        HideLanguageButtons();
+        
+        LanguageChanged();//Event Trigger 
     }
 
 

@@ -94,5 +94,27 @@ public class UI_Options_Manager : MonoBehaviour
         SaveManager._instance.AdjustInputType(_getInput.inputType);
         HideOptions();
     }
+
+    public void LoadClickMode(int clickMode)
+    {
+        if(clickMode == 1)
+        {
+            _getInput.inputType = GetInput.InputType.Single_Click;
+            singleClickButton.ApplyTextEffect(selectedText);
+            doubleClickButton.ApplyTextEffect(unSelectedText);
+        }
+        else if(clickMode == 2)
+        {
+            _getInput.inputType = GetInput.InputType.Double_Click;
+            singleClickButton.ApplyTextEffect(unSelectedText);
+            doubleClickButton.ApplyTextEffect(selectedText);
+        }
+        else
+        {
+            _getInput.inputType = GetInput.InputType.Single_Click;
+            singleClickButton.ApplyTextEffect(selectedText);
+            doubleClickButton.ApplyTextEffect(unSelectedText);
+        }
+    }
    
 }

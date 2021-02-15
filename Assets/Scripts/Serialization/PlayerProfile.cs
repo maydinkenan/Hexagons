@@ -42,16 +42,26 @@ public class PlayerProfile
        return isGameSaved;
    }
 
+/// <summary>
+/// Returns saved game grid
+/// </summary>
+/// <returns></returns>
    public  List<List<HexCell>> GetGameGrid()
    {
        isGameSaved=false;
        return gameGrid;
    }
-
+/// <summary>
+/// Sets Game ID and saves hexagonal grid
+/// </summary>
+/// <param name="_gameGrid"></param>
    public void SaveGameGrid( List<List<HexCell>> _gameGrid)
    {
+       Debug.Log("Grid Saved");
+       SetGameID();
        isGameSaved=true;
        gameGrid = _gameGrid;
+       SaveManager._instance.OnSaveState();
    }
 
 

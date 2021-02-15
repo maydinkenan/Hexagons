@@ -42,13 +42,18 @@ public class Application_Manager : MonoBehaviour
     /// </summary>
     public void ContinueLastGame()
     {
+        UI_Manager._instance.HideSaveGameUI();
+        UI_Manager._instance.ShowCanvasGroupCoroutine(2);
+        UI_Manager._instance.HideMainMenuItems();
+        UI_CellsController._instance.HideAllCells();
 
+        Game_Manager._instance.LoadGame();
     }
     /// <summary>
     /// Deletes the last game
     /// </summary>
     public void DontContinueLastGame()
     {
-
+        UI_Manager._instance.HideSaveGameUI();
     }
 }
