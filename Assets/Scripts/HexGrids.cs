@@ -83,7 +83,7 @@
             v3Pos.y -= rowDist;
         }
 
-        SaveManager._instance.currrentSaveData.profile.SaveGameGrid(hexgrid);
+        //SaveManager._instance.currrentSaveData.profile.SaveGameGrid(hexgrid);
     }
 
     public void GenerateGrid(List<List<HexCell>> newGrid)

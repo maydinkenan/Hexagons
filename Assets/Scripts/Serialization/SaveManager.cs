@@ -51,7 +51,8 @@ public class SaveManager : MonoBehaviour
 
         GetInput._instance.LoadInputType( currrentSaveData.settings.inputType,false) ;
 
-        LoadMusic(currrentSaveData.settings.musicOn);
+        LoadMusic(currrentSaveData.settings.musicVolume);
+        LoadFX(currrentSaveData.settings.fxVolume);
 
         LoadPlayerHighScore(currrentSaveData.profile.highScore);
 
@@ -59,7 +60,7 @@ public class SaveManager : MonoBehaviour
 
     }
 
-    public void AdjustMusic(bool newValue)
+    public void AdjustMusic(float newValue)
     {
         if(currrentSaveData==null)
         {
@@ -68,22 +69,23 @@ public class SaveManager : MonoBehaviour
         }
         
         currrentSaveData.settings.AdjustMusic(newValue);
-
+        OnSaveState();
+        
     }
     
 
-    public void LoadMusic(bool musicValue)
+    public void LoadMusic(float musicValue)
     {
         AudioManager._instance.AdjustMusic(musicValue);
-        UI_ChangeImage._audioChangeImageInstance.ChangeImage(musicValue);
+        //UI_ChangeImage._audioChangeImageInstance.ChangeImage(musicValue);
     }
-    public void LoadFX(bool fxValue)
+    public void LoadFX(float fxValue)
     {
         AudioManager._instance.AdjustFX(fxValue);
 
     }
 
-    public void AdjustFX(bool newvalue)
+    public void AdjustFX(float newvalue)
     {
          if(currrentSaveData==null)
         {
@@ -92,6 +94,7 @@ public class SaveManager : MonoBehaviour
         }
 
         currrentSaveData.settings.AdjustFX(newvalue);
+        OnSaveState();
     }
     /// <summary>
     /// Returns True if the newPoints is higher than the previous one

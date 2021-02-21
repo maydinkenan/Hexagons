@@ -61,6 +61,7 @@ public class PlayerProfile
        SetGameID();
        isGameSaved=true;
        gameGrid = _gameGrid;
+       Debug.Log("Gamegrid count "+gameGrid.Count);
        SaveManager._instance.OnSaveState();
    }
 

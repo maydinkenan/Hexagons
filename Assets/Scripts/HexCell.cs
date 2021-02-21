@@ -36,6 +36,7 @@ public class HexCell : MonoBehaviour
         isCellDestroyed=true;
         iTween.ScaleTo(this.gameObject,Vector3.zero,0.5f);
         //Game_Manager._instance.AddPoints();
+        SoundManager._instance.PlayEffect();
         Invoke("Respawn",2.5f);
     }
 

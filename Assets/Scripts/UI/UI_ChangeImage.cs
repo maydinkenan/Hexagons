@@ -41,7 +41,7 @@ public class UI_ChangeImage : MonoBehaviour
             audioImage.sprite = offSprite;  
         }
 
-        AudioManager._instance.AdjustMusic(onOff);
+        
     }
 
 

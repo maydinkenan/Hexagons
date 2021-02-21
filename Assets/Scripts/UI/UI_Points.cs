@@ -10,11 +10,11 @@ public class UI_Points : MonoBehaviour
     int currentPoint=0;
     int goalPoint=0;
     
-    float startTime=0f;
-    float endTime=0f;
+    //float startTime=0f;
+    //float endTime=0f;
     public float animationTime=2f;
-    int pointRate=0;
-    int timeRate=10;
+   // int pointRate=0;
+    //int timeRate=10;
     // Start is called before the first frame update
     void Awake()
     {

@@ -4,27 +4,29 @@ using UnityEngine;
 [System.Serializable]
 public class SettingsProfile 
 {
-    public bool musicOn;
-    public bool fxOn;
+    public float musicVolume;
+    public float fxVolume;
     public LocalisationSystem.Language language;
 
     public GetInput.InputType inputType;
 
+    private const float defaultVolume=0.7f;
+
     public SettingsProfile()
     {
-        musicOn=true;
-        fxOn=true;
+        musicVolume=defaultVolume;
+        fxVolume=defaultVolume;
         language = LocalisationSystem.Language.English;
         inputType = GetInput.InputType.Single_Click;
     }
-    public void AdjustMusic(bool newValue)
+    public void AdjustMusic(float newValue)
     {
-        musicOn = newValue;
+        musicVolume = newValue;
     }
 
-    public void AdjustFX(bool newValue)
+    public void AdjustFX(float newValue)
     {
-        fxOn = newValue;
+        fxVolume = newValue;
     }
 
     public void AdjustInputType(GetInput.InputType newInputType)
