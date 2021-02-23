@@ -110,6 +110,7 @@ public class UI_LanguageSelection : MonoBehaviour
         else
         {
             ShowLanguageButtons();
+            UI_Options_Manager._instance.ShowOptionsMenu(2);
         }
     }
     
@@ -126,7 +127,7 @@ public class UI_LanguageSelection : MonoBehaviour
         languageButtons.interactable=true;
         languageButtons.ignoreParentGroups=true;
 
-        UI_Options_Manager._instance.HideOptions();
+        UI_Click_Options_Manager._instance.HideOptions();
     }
 
     public void HideLanguageButtons()

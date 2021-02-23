@@ -41,6 +41,7 @@ public class UI_GameAudioManager : MonoBehaviour
         else
         {
             ShowGameAudio();
+            UI_Options_Manager._instance.ShowOptionsMenu(1);
         }
     }
 }

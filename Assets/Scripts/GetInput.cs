@@ -115,11 +115,11 @@ public class GetInput : MonoBehaviour
         }
         if(save)
         {
-            UI_Options_Manager._instance.SelectClickMode(clickMode);
+            UI_Click_Options_Manager._instance.SelectClickMode(clickMode);
         }
         else
         {
-            UI_Options_Manager._instance.LoadClickMode(clickMode);
+            UI_Click_Options_Manager._instance.LoadClickMode(clickMode);
         }
         
     }
