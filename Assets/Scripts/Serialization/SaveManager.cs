@@ -77,6 +77,7 @@ public class SaveManager : MonoBehaviour
     public void LoadMusic(float musicValue)
     {
         AudioManager._instance.AdjustMusic(musicValue);
+        Debug.Log("Music volume "+musicValue);
         //UI_ChangeImage._audioChangeImageInstance.ChangeImage(musicValue);
     }
     public void LoadFX(float fxValue)

@@ -51,8 +51,11 @@ public class AudioManager : MonoBehaviour
 /// <param name="newValue"></param>
     public void AdjustMusic(float newValue)
     {
+        Debug.Log("Volume Before "+musicVolumeSlider.value +" new value "+newValue);
+        musicVolumeSlider.value=newValue;
         HandleMusicSliderValueChanged(newValue);
-        SaveManager._instance.AdjustMusic(newValue);
+        Debug.Log("Volume after "+musicVolumeSlider.value);
+       
     }
 /// <summary>
 /// Sets the fx volume value on the slider
@@ -60,7 +63,10 @@ public class AudioManager : MonoBehaviour
 /// <param name="newValue">></param>
     public void AdjustFX(float newValue)
     {
+        
+        soundfxVolumeSlider.value = newValue;
         HandleSoundFxSliderValueChanged(newValue);
+        
 
     }
 
@@ -69,15 +75,21 @@ public class AudioManager : MonoBehaviour
     {
         
         _mixer.SetFloat(musicVolumeParameter,Mathf.Log10(value) * volumeMultiplier);
-        SaveManager._instance.AdjustMusic(value);
+        //SaveManager._instance.AdjustMusic(value);
     }
 
     public void HandleSoundFxSliderValueChanged(float value)
     {
         _mixer.SetFloat(soundfxVolumeParameter,Mathf.Log10(value) * volumeMultiplier);
-        SaveManager._instance.AdjustFX(value);
+        //SaveManager._instance.AdjustFX(value);
     }
     
+
+    public void SaveVolumeState()
+    {
+        SaveManager._instance.AdjustMusic(musicVolumeSlider.value);
+        SaveManager._instance.AdjustFX(soundfxVolumeSlider.value);
+    }
 
     
 }
