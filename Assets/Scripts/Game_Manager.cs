@@ -51,6 +51,10 @@ public class Game_Manager : MonoBehaviour
                 levelIndex=i;
             }
         }
+        if(currentLevel<levelIndex)
+        {
+            AnalyticsManager._instance.LevelUp(levelIndex);
+        }
         currentLevel=levelIndex;
     }
 
